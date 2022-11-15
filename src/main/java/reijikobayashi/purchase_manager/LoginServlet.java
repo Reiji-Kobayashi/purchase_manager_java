@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,8 +38,9 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		//変数の初期設定
-		String name = "ゲスト"; // ログイン名
+		String name = null; // ログイン名
 		String status = "ログイン失敗"; // ステータス
+		String role = null; // 役職
 		
 		// DB関連の初期設定
 		Connection conn = null; //DBとの接続、切断
@@ -66,12 +69,12 @@ public class LoginServlet extends HttpServlet {
 			// sql文作成の準備
 			StringBuffer sql = new StringBuffer();
 
-			// sqlの作成(nameから)
+			// sqlの作成(email_addressからselect)
 			sql.append("select name, pass, role from user_table where ");
 			sql.append("email_address = '" + email_address + "'");
 
 			// sql文表示
-			System.out.println(sql);
+			// System.out.println(sql);
 
 			// sql文実行準備
 			pstmt = conn.prepareStatement(new String(sql));
@@ -87,17 +90,22 @@ public class LoginServlet extends HttpServlet {
 
 			// IDとパスワードのチェック
 			if (rset.next() != false) {
-				System.out.println(rset.getString("pass"));
+				// System.out.println(rset.getString("pass"));
 				if (pass.equals(rset.getString("pass"))) {
 					status = "ログイン成功";
 					name = rset.getString("name");
-				}else {}
+					role = rset.getString("role");
+				}else {
+					
+				}
 			}else {
 			}
 			
-			// リクエストにデータを追加
-			request.setAttribute("login", status);
-			request.setAttribute("name", name);
+			// HttpSessionにデータを追加
+			HttpSession session = request.getSession( true );
+			session.setAttribute("login", status);
+			session.setAttribute("name", name);
+			session.setAttribute("role", role);
 			
 			// memu.jspへ遷移
 			request.getRequestDispatcher("/menu.jsp").forward(request, response);

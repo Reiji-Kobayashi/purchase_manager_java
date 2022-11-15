@@ -10,14 +10,27 @@
 <body>
 	<br>
 	<%
-		String message = (String)request.getAttribute( "login" );
-		String name = (String)request.getAttribute( "name" );
-		if(name == null){message = "ログイン情報がありません";}
+		String message = (String)session.getAttribute( "login" );
+		String name = (String)session.getAttribute( "name" );
+		String role = (String)session.getAttribute( "role" );
+		if(role == null){message = "ログイン情報がありません";}
 	%>
 
 	<br><br>
  	<%= message %> <br><br>
- 
-	こんにちは <%= name %> さん<br><br>
+ 	
+	<% if(role != null){ %>
+		こんにちは <%= name %> さん<br><br>
+	
+		アカウント管理<br>
+		物品管理<br>
+	
+		<% if(role.equals("member") || role.equals("admin")){ %>
+		物品登録<br>
+		<% } %>
+		<% if(role.equals("admin")){ %>
+		<a href="./user_management.jsp">ユーザ管理</a><br>
+		<% } %>
+	<% } %>
 </body>
 </html>
