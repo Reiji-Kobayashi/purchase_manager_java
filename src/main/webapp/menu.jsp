@@ -29,7 +29,7 @@
 		物品登録<br>
 		<% } %>
 		<% if(role.equals("admin")){ %>
-		<a href="./user_management.jsp">ユーザ管理</a><br>
+		<a href="./admin.jsp">ユーザ管理</a><br>
 		<% } %>
 	<% } %>
 </body>

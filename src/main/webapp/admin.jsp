@@ -8,6 +8,7 @@
 </head>
 
 <body>
-	ユーザ管理画面
+	ユーザ管理画面<br><br>
+	<a href="./register_user.jsp">ユーザ登録</a>
 </body>
 </html>

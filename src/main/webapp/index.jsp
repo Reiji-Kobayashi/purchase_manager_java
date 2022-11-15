@@ -17,7 +17,7 @@
 	
 	<form action="Login" method="POST">
 		EmailAddress:<input type="text" name="email_address">
-		Pass:<input type="text" name="pass"> <br>
+		Pass:<input type="password" name="pass"> <br>
 		<br>
 		
 		<input type="submit" value="submit">
