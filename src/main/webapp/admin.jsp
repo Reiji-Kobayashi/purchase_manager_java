@@ -10,5 +10,6 @@
 <body>
 	ユーザ管理画面<br><br>
 	<a href="./register_user.jsp">ユーザ登録</a>
+	<a href="./search_user.jsp">ユーザ管理</a>
 </body>
 </html>

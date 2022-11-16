@@ -29,4 +29,14 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/Register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchUserServlet</display-name>
+    <servlet-name>SearchUserServlet</servlet-name>
+    <servlet-class>reijikobayashi.purchase_manager.SearchUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchUserServlet</servlet-name>
+    <url-pattern>/SearchUser</url-pattern>
+  </servlet-mapping>
 </web-app>
