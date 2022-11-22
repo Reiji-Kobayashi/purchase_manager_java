@@ -48,10 +48,41 @@ public class UserBeans {
 		pstmt.close();
 		conn.close();
 	}
+		
+	//削除
+	public Boolean deleteData() {
+		try {
+
+			// sql文の作成
+			String sql = "delete from user_table where id=" + id;
+
+			// データベース接続＆sqlの実行
+			doDataBase(sql);
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}	
 	
-	//
-	
-	
+	// 役職変更
+	public Boolean updateData() {
+		try {
+			// sql文の作成
+			String sql = "update user_table set role='" + role + "' where id=" + id;
+
+			// データベース接続＆sqlの実行
+			doDataBase(sql);
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 	// getter, setter
 	public String getId() {

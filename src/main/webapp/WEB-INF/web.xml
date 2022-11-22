@@ -39,4 +39,14 @@
     <servlet-name>SearchUserServlet</servlet-name>
     <url-pattern>/SearchUser</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManageUserServlet</display-name>
+    <servlet-name>ManageUserServlet</servlet-name>
+    <servlet-class>reijikobayashi.purchase_manager.ManageUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageUserServlet</servlet-name>
+    <url-pattern>/ManageUser</url-pattern>
+  </servlet-mapping>
 </web-app>
